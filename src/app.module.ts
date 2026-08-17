@@ -20,6 +20,9 @@ import { AuthModule } from './auth/auth.module';
 import { TeachersModule } from './teachers/teachers.module';
 import { ParentsModule } from './parents/parents.module';
 import { StudentsModule } from './students/students.module';
+import { MeetingsService } from './meetings/meetings.service';
+import { MeetingsController } from './meetings/meetings.controller';
+import { MeetingsModule } from './meetings/meetings.module';
 
 
 @Module({
@@ -51,7 +54,10 @@ import { StudentsModule } from './students/students.module';
     TeachersModule,
     ParentsModule,
     StudentsModule,
+    MeetingsModule,
   ],
+  // providers: [MeetingsService],
+  // controllers: [MeetingsController],
 })
 export class AppModule {}
 
