@@ -1,14 +1,5 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from 'typeorm';
-import { 
-  UserRole, 
-  UserStatus 
-} from '../users_enum/users.enum';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, } from 'typeorm';
+import { UserRole, UserStatus } from '../users_enum/users.enum';
 import { Exclude } from 'class-transformer';
 
 

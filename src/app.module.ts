@@ -10,6 +10,8 @@ import { TeachersModule } from './teachers/teachers.module';
 import { ParentsModule } from './parents/parents.module';
 import { StudentsModule } from './students/students.module';
 import { MeetingsModule } from './meetings/meetings.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 
 @Module({
@@ -40,6 +42,9 @@ import { MeetingsModule } from './meetings/meetings.module';
     StudentsModule,
     MeetingsModule,
   ],
+  controllers: [AppController],
+  providers: [AppService],
+
 
 })
 export class AppModule {}

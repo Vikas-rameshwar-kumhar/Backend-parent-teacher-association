@@ -20,10 +20,19 @@ export class TeachersService {
     const existingUser = await this.dataSource
       .getRepository(User)
       .findOne({ where: { email: dto.email } });
-
+ 
     if (existingUser) {
       throw new ConflictException('Email already in use');
     }
+
+    const existingTeacher = await this.dataSource
+      .getRepository(Teacher)
+      .findOne({ where: { employee_code: dto.employee_code } });
+
+    if (existingTeacher) {
+      throw new ConflictException('Employee code already in use');
+    }
+
 
     return this.dataSource.transaction(async (manager) => {
       const hashedPassword = await bcrypt.hash(dto.password, 10);
@@ -63,33 +72,6 @@ export class TeachersService {
     return teacher;
   }
 
-
-
-
-
-//   async update(id: number, dto: UpdateTeacherDto): Promise<Teacher> {
-//     const teacher = await this.findOne(id);
-
-//     const { name, email, phone, password, ...teacherFields } = dto;
-
-//     return this.dataSource.transaction(async (manager) => {
-//         if (name || email || phone || password) {
-//             const userUpdate: Partial<User> = {};
-//             if (name) userUpdate.name = name;
-//             if (email) userUpdate.email = email;
-//             if (phone) userUpdate.phone = phone;
-//             if (password) userUpdate.password = await bcrypt.hash(password, 10);
-
-//             await manager.update(User, teacher.user_id, userUpdate);
-//         }
-
-//         if (Object.keys(teacherFields).length > 0) {
-//             await manager.update(Teacher, id, teacherFields);
-//         }
-
-//         return manager.findOne(Teacher, { where: { id } });
-//     });
-//   }
 
 async update(id: number, dto: UpdateTeacherDto): Promise<Teacher> {
   const teacher = await this.findOne(id);

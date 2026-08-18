@@ -71,7 +71,8 @@ export class AuthService {
       );
     }
 
-    const hashedNewPassword = await bcrypt.hash(dto.new_password, 10);
+    const saltRounds = 10
+    const hashedNewPassword = await bcrypt.hash(dto.new_password, saltRounds);
 
     await this.usersService.updatePassword(userId, hashedNewPassword);
 
