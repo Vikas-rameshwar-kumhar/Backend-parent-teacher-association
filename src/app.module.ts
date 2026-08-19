@@ -12,6 +12,7 @@ import { StudentsModule } from './students/students.module';
 import { MeetingsModule } from './meetings/meetings.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AnnouncementsModule } from './announcements/announcements.module';
 
 
 @Module({
@@ -41,6 +42,7 @@ import { AppService } from './app.service';
     ParentsModule,
     StudentsModule,
     MeetingsModule,
+    AnnouncementsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
