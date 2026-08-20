@@ -14,3 +14,4 @@ import { AuthModule } from '../auth/auth.module';
   controllers: [AnnouncementsController],
 })
 export class AnnouncementsModule {}
+

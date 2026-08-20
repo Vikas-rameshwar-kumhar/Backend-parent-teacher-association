@@ -1,7 +1,6 @@
 
 
-
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Announcement } from './entities/announcement.entity';
@@ -19,6 +18,11 @@ export class AnnouncementsService {
     dto: CreateAnnouncementDto,
     createdById: number,
   ): Promise<Announcement> {
+
+//       if (user.role !== 'admin' , 'teacher') {
+//     throw new ForbiddenException('Only admins can create announcements');
+//   }
+
     const announcement = this.announcementRepository.create({
       ...dto,
       created_by: createdById,
@@ -47,14 +51,29 @@ export class AnnouncementsService {
   async update(
     id: number,
     dto: UpdateAnnouncementDto,
+    user: { id: number; role: string },
   ): Promise<Announcement> {
     const announcement = await this.findOne(id);
+
+    if (announcement.creator.role !== user.role) {
+      throw new ForbiddenException(
+        `Only ${announcement.creator.role}s can update this announcement`,
+      );
+    }
+
     Object.assign(announcement, dto);
     return this.announcementRepository.save(announcement);
   }
 
-  async remove(id: number): Promise<void> {
+  async remove(id: number, user: { id: number; role: string }): Promise<void> {
     const announcement = await this.findOne(id);
+
+    if (announcement.creator.role !== user.role) {
+      throw new ForbiddenException(
+        `Only ${announcement.creator.role}s can delete this announcement`,
+      );
+    }
+
     await this.announcementRepository.remove(announcement);
   }
 }
