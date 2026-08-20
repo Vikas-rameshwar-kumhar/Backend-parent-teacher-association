@@ -48,6 +48,7 @@ import {
   IsEnum,
   Length,
   Matches,
+  IsStrongPassword,
 } from 'class-validator';
 import { UserRole } from '../users_enum/users.enum';
 
@@ -75,6 +76,7 @@ export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
   @Length(6, 255)
+  // @IsStrongPassword()
   password: string;
 
   @ApiProperty({ enum: UserRole, example: UserRole.ADMIN })

@@ -14,6 +14,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AnnouncementsModule } from './announcements/announcements.module';
 import { RemarksService } from './remarks/remarks.service';
+import { RemarksController } from './remarks/remarks.controller';
 
 
 @Module({
@@ -45,7 +46,7 @@ import { RemarksService } from './remarks/remarks.service';
     MeetingsModule,
     AnnouncementsModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, RemarksController],
   providers: [AppService, RemarksService],
 
 
