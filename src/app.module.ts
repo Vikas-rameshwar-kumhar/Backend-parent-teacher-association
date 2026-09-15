@@ -13,8 +13,7 @@ import { MeetingsModule } from './meetings/meetings.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AnnouncementsModule } from './announcements/announcements.module';
-import { RemarksService } from './remarks/remarks.service';
-import { RemarksController } from './remarks/remarks.controller';
+import { RemarksModule } from './remarks/remarks.module';
 
 
 @Module({
@@ -45,9 +44,10 @@ import { RemarksController } from './remarks/remarks.controller';
     StudentsModule,
     MeetingsModule,
     AnnouncementsModule,
+    RemarksModule,
   ],
-  controllers: [AppController, RemarksController],
-  providers: [AppService, RemarksService],
+  controllers: [AppController],
+  providers: [AppService],
 
 
 })
