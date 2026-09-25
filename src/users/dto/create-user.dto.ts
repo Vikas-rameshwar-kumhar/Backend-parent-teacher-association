@@ -80,6 +80,6 @@ export class CreateUserDto {
   password: string;
 
   @ApiProperty({ enum: UserRole, example: UserRole.ADMIN })
-  @IsEnum(UserRole, { message: 'Role must be admin, teacher, or parent' })
+  @IsEnum(UserRole, { message: 'Role must be admin' })
   role: UserRole;
 }

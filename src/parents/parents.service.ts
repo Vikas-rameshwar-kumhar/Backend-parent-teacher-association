@@ -33,7 +33,7 @@ export class ParentsService {
         email: dto.email,
         phone: dto.phone,
         password: hashedPassword,
-        role: UserRole.PARENT,
+        // role: UserRole.PARENT,
       });
       const savedUser = await manager.save(user);
 

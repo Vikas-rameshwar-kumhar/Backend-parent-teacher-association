@@ -32,6 +32,12 @@ export class RemarksController {
     return this.remarksService.create(createRemarkDto, req.user);
   }
 
+  @Get()
+  @Roles('admin', 'teacher', 'parent')
+  findAll(@Req() req) {
+  return this.remarksService.findAll(req.user);
+}
+
   @Get('student/:id')
   @Roles('admin', 'teacher', 'parent')
   findByStudent(@Param('id', ParseIntPipe) studentId: number, @Req() req) {

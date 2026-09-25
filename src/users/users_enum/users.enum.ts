@@ -2,7 +2,7 @@
 export enum UserRole {
   ADMIN = 'admin',
   TEACHER = 'teacher',
-  PARENT = 'parent',
+  // PARENT = 'parent',
 }
 
 export enum UserStatus {
